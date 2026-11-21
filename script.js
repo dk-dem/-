@@ -25,6 +25,7 @@ function validateValue(raw) {
   if (value === "") {
     return { type: "empty", message: "Не забудьте указать значение — без него не посчитать стоимость роллов!" };
   }
+
   // Допускаем знак минус в начале: -5 — это число, а не "буквы"
   const normalized = value.replace(",", ".");
   if (!/^-?(\d+(\.\d+)?|\.\d+)$/.test(normalized) || isNaN(Number(normalized))) {
