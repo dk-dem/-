@@ -1,14 +1,14 @@
 :root {
-  --bg-gradient: linear-gradient(135deg, #fdf6e3 0%, #e8f5e9 100%);
-  --card-bg: rgba(255, 255, 255, 0.92);
-  --text: #2e2c29;
-  --accent: #d35400;        /* тёплый оранжево‑коричневый, как имбирь */
-  --accent-hover: #a04000;
-  --muted: #7f8c8d;
-  --border: #c0c0c0;
-  --radius-base: 16px;
-  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
-  --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.12);
+  --bg-color: #f4eec9;          /* тёплый бежевый фон */
+  --card-bg: rgba(255, 255, 255, 0.94);
+  --text: #33312e;              /* тёмно‑бежевый, не чёрный — мягче на бежевом */
+  --accent: #d48c4d;            /* приглушённый терракотовый (под суши‑бар) */
+  --accent-hover: #b87640;
+  --muted: #8e877f;
+  --border: #e6dcc3;
+  --radius-base: 18px;
+  --shadow-soft: 0 4px 14px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.1);
 }
 
 * {
@@ -19,7 +19,7 @@
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg-gradient);
+  background-color: var(--bg-color);
   color: var(--text);
   line-height: 1.55;
   min-height: 100vh;
@@ -28,7 +28,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Декоративные элементы фона — тонкие линии и пятна */
+/* Лёгкие декоративные пятна на фоне — добавляют глубины без пестроты */
 body::before {
   content: "";
   position: absolute;
@@ -36,41 +36,43 @@ body::before {
   pointer-events: none;
   z-index: 0;
   background-image:
-    radial-gradient(circle at 10% 20%, rgba(211, 84, 0, 0.06) 0%, transparent 50%),
-    radial-gradient(circle at 90% 80%, rgba(149, 195, 149, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 15% 25%, rgba(212, 140, 77, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 85% 75%, rgba(190, 175, 150, 0.1) 0%, transparent 50%);
+  opacity: 0.6;
 }
 
 .site-header {
-  background: rgba(211, 84, 0, 0.85);
+  background: rgba(212, 140, 77, 0.92);
   color: #fff;
   text-align: center;
   padding: 36px 16px;
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(8px);
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  backdrop-filter: blur(10px);
+  border-bottom-left-radius: 48px;
+  border-bottom-right-radius: 48px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
 }
 
 .site-header h1 {
-  font-size: 1.8rem;
+  font-size: 1.85rem;
   margin-bottom: 8px;
   letter-spacing: 0.5px;
-  text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .site-header p {
-  opacity: 0.95;
+  opacity: 0.96;
   font-size: 0.98rem;
-  max-width: 560px;
+  max-width: 580px;
   margin: 0 auto;
 }
 
 .site-footer {
   text-align: center;
-  padding: 22px;
+  padding: 24px;
   color: var(--muted);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   margin-top: auto;
   border-top: 1px solid rgba(255,255,255,0.3);
 }
@@ -83,9 +85,9 @@ body::before {
 
 .container {
   width: 100%;
-  max-width: 760px;
-  margin: 24px auto;
-  padding: 0 14px;
+  max-width: 780px;
+  margin: 26px auto;
+  padding: 0 16px;
   flex: 1;
   position: relative;
   z-index: 1;
@@ -93,12 +95,12 @@ body::before {
 
 .card {
   background: var(--card-bg);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(200, 200, 200, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(230, 220, 195, 0.6);
   border-radius: var(--radius-base);
   box-shadow: var(--shadow-soft);
-  padding: 30px;
-  margin-bottom: 26px;
+  padding: 32px;
+  margin-bottom: 28px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -137,11 +139,11 @@ body::before {
   border-color: var(--accent);
   box-shadow:
     inset 0 1px 3px rgba(0,0,0,0.04),
-    0 0 0 3px rgba(211, 84, 0, 0.15);
+    0 0 0 3px rgba(212, 140, 77, 0.18);
 }
 
 .field input.invalid {
-  border-color: #c0392b;
+  border-color: #a94442;
   background-color: #fdf2f2;
   box-shadow: none;
 }
@@ -149,7 +151,7 @@ body::before {
 .error-msg {
   display: block;
   min-height: 22px;
-  color: #c0392b;
+  color: #a94442;
   font-size: 0.84rem;
   margin-top: 6px;
   line-height: 1.4;
@@ -180,7 +182,7 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.12);
   opacity: 0;
   transform: scaleX(0);
   transform-origin: left center;
@@ -194,13 +196,13 @@ body::before {
 .btn-primary {
   background: var(--accent);
   color: #fff;
-  box-shadow: 0 4px 14px rgba(211, 84, 0, 0.3);
+  box-shadow: 0 4px 14px rgba(212, 140, 77, 0.32);
   flex: 1;
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
-  box-shadow: 0 6px 18px rgba(160, 64, 0, 0.35);
+  box-shadow: 0 6px 18px rgba(184, 118, 64, 0.4);
   transform: translateY(-1px);
 }
 
@@ -211,13 +213,13 @@ body::before {
 }
 
 .btn-ghost:hover {
-  background: rgba(211, 84, 0, 0.06);
+  background: rgba(212, 140, 77, 0.08);
   border-color: var(--accent-hover);
   color: var(--accent-hover);
 }
 
 .btn-danger {
-  background: #c0392b;
+  background: #a94442;
   color: #fff;
   font-size: 0.86rem;
   padding: 9px 18px;
@@ -225,16 +227,16 @@ body::before {
 }
 
 .btn-danger:hover {
-  background: #a93226;
-  box-shadow: 0 4px 12px rgba(192, 57, 43, 0.3);
+  background: #943a38;
+  box-shadow: 0 4px 12px rgba(169, 68, 66, 0.35);
 }
 
 .result {
   margin-top: 24px;
   padding: 20px;
   border-radius: 12px;
-  background: #eafaf1;
-  border: 1px dashed #27ae60;
+  background: #fcf8e3;
+  border: 1px dashed #d4a54d;
   animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -246,13 +248,13 @@ body::before {
 .result h2 {
   font-size: 1.1rem;
   margin-bottom: 6px;
-  color: #2c3e50;
+  color: #4a453e;
 }
 
 #result-text {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #27ae60;
+  color: #d48c4d;
   letter-spacing: 1px;
 }
 
@@ -275,10 +277,10 @@ body::before {
 
 .log-item {
   padding: 15px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #eee4d1;
   border-radius: 10px;
   margin-bottom: 11px;
-  background: #fafafa;
+  background: #fdfbf8;
   animation: fadeIn 0.3s ease;
 }
 
@@ -301,12 +303,12 @@ body::before {
   text-align: center;
 }
 
-/* Тонкие декоративные разделители */
+/* Тонкие разделители между полями */
 .card > :not(:first-child):not(.buttons)::before {
   content: "";
   display: block;
   height: 1px;
-  background: rgba(0,0,0,0.04);
+  background: rgba(0,0,0,0.05);
   margin: 18px 0;
   border-radius: 50%;
 }
